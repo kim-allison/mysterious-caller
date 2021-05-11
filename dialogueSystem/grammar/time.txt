@@ -1,0 +1,2 @@
+time_act -> <it_is>
+it_is -> It is | it is

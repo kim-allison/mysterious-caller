@@ -1,0 +1,4 @@
+name_act -> <i_start> | <my_start> | <this_start>
+i_start -> I'm | I am
+my_start -> My name is | my name is
+this_start -> This is | this is

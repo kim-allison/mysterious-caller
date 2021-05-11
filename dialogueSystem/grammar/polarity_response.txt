@@ -1,0 +1,8 @@
+positive -> <appraise> Such a <positive_adj> attitude. <ending_sentence>
+appraise -> Marvelous! | Wonderful! | Oh wow! | Awesome! | Amazing! | Gosh! | Oh my gosh!
+positive_adj -> positive | optimistic | great
+ending_sentence -> I hope you keep that up during our conversation. | I love your attitude. | I'm beginning to like you more and more. | Why are you so positive? | I hope I could be like you. 
+negative -> <Wondering>why so <nagative_adj>? <ending_sentence2>
+Wondering -> Hmm... | Uhh... | Ehh... | Haha...
+nagative_adj -> negative | pessimistic | sad
+ending_sentence2 -> What's making you act that way, if I may ask? | I don't like your negative attitude. | You are kind of annoying...did you know that? | I wouldn't want my children to hear what you're saying. Good thing that they are listening to Kidz Bop. | Why are you being so negative?

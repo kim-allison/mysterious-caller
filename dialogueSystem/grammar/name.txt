@@ -1,0 +1,10 @@
+name_act -> <i_start> | <my_start> | <other_start> <this_start> | <call_start> | <you_start>
+you_start -> You're <s_prep> | you're <s_prep> | you are <s_prep> | You are <s_prep>
+s_prep -> speaking <prep> | talking <prep>
+prep -> to | with
+i_start -> I'm | I am
+my_start -> My name <is> | my name <is>
+other_start -> His name <is> | Her name <is> | his name <is> | her name <is> | Their name <is> | their name <is> | My best friend <is> | my friend <is>
+is -> is | are  | was | were | has been | have been
+this_start -> This <is> | this <is>
+call_start -> Call me | call me

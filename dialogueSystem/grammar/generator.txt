@@ -1,0 +1,17 @@
+profanity -> <angry><should> | <should><threatening>
+angry -> Wait, did you just say %dirty% to me?
+should -> Watch your language. Try using %clean% instead.
+threatening -> If you use %dirty% again, I might kill you tonight, who knows?
+fallback -> <kind> | <harsh>
+kind -> <unrecognize> <repeat>
+unrecognize -> <sorry>, I <understand> what you <say_verb>.
+sorry -> I'm sorry | Sorry | Pardon me
+understand -> am not sure | don't understand | don't know
+say_verb -> said | meant | tried to communicate
+repeat -> <aux> you <repeat_verb> it again?
+aux -> Could | Can
+repeat_verb -> repeat | say | explain
+harsh -> <nonsense> <request>
+nonsense -> I have no idea what you <say_verb>. | What are you <say_progressive>? | You are not answering my question. | You talk nonsense. | That's rubbish.
+say_progressive -> saying | meaning | trying to communicate
+request -> Do you want to <repeat_verb> again? | Why don't you <repeat_verb> again? | Explain more.

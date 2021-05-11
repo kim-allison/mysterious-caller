@@ -1,0 +1,4 @@
+response -> <positive> | <negative> | <not_sure>
+positive -> Yes defintely! | YESSSSS | Of course! | Yep 
+negative -> No! | Hmm I don't think so. | Of course not!
+not_sure -> Hmm not sure | hmm i need to think about the answer more | It is a hard question. I am not sure how to answer it. 

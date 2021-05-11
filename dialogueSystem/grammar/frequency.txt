@@ -1,0 +1,4 @@
+frequency_act -> every <noun> | every <phrase> | <time> a <noun>
+noun -> minute | day | week | month | year | decade | century
+phrase -> other <noun> | two <noun>s | three <noun>s
+time -> once | twice | three times | four times | five times

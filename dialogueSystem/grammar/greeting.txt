@@ -1,0 +1,4 @@
+greeting -> <short><punct> | <long>
+short -> Hi | hi | Hello | hello
+punct -> . | , | ! | ~ | ?
+long -> What's up | what's up | How are you | how are you

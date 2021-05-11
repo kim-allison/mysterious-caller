@@ -1,0 +1,21 @@
+What is your best friend's name?
+What is %friend_name%'s favorite snack?
+What do you like to do with %friend_name%?
+Where do you and %friend_name% hang out often?
+Where do you work?
+What is %friend_name%'s favorite snack?
+On weekdays, when is %friend_name% usually free?
+Where does %friend_name% work?
+Do you know what days %friend_name% works?
+Where did you grow up?
+Did %friend_name% grow up in %grow% too?
+Do you have a large family?
+Does %friend_name% have a large family?
+Have you seen %friend_name% recently?
+Do you know if %friend_name% travels a lot?
+Would you like to go on a trip with %friend_name%?
+What country do you most want to visit?
+Does %friend_name% have any hobbies that you don't have?
+Do you enjoy watching or playing sports?
+Does %friend_name% like to run or play sports?
+Do you know if %friend_name% ever leaves their door unlocked?

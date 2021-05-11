@@ -1,0 +1,21 @@
+Who am I speaking with?
+What are you doing later today, %user_name%?
+What is your favorite restaurant?
+How frequently do you go to %restaurant%?
+Where do you work?
+Do you like working out or going on runs?
+What is your favorite park?
+How frequently do you go to %park%?
+Where do you like to shop?
+Where did you grow up?
+Do you have any siblings? What are their names?
+Do you like to hang out with your family?
+How frequently do you get to see %sibling% (or if no siblings), How frequently do you get to see family?
+What do you like to do for fun? 
+How frequently do you get to %activity%?
+What do you like to do on the weekends? 
+Are there any events or festivals that you like to go to?
+Does %event% happen weekly or monthly or yearly?
+Do you enjoy traveling?
+What is your favorite country you have visited?
+Where do you most want to go visit?

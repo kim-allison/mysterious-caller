@@ -1,0 +1,5 @@
+goodbye -> <short><punct> | <long>
+short -> Bye | bye | Goodbye | goodbye | 
+punct -> . | , | ! | ~ | ?
+long -> See you <time> | see you <time> | Talk to you <time> | talk to you <time> | I must be going
+time -> later | soon
