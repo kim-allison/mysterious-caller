@@ -14,18 +14,18 @@ class Generator:
   def __init__(self, goal):    
     self.engine = GrammarEngine('./dialogueSystem/grammar/generator.txt')
 
-    f_dracula= open('./dialogueSystem/dracula.txt')
+    f_dracula= open('./dialogueSystem/dracula.txt', encoding="utf8")
     whole_dracula = f_dracula.read()
     train_dracula = whole_dracula[:int(len(whole_dracula)*0.8)]
-    train_dracula_file = open('./dialogueSystem/train_dracula.txt',"w+")
+    train_dracula_file = open('./dialogueSystem/train_dracula.txt',"w+", encoding="utf8")
     train_dracula_file.write(train_dracula)
 
     self.identity_chain = MarkovChain('./dialogueSystem/train_dracula.txt', "word", 3)
     
     if goal == "Friend":
-      f_questions = open('./dialogueSystem/questionsFriendGoal.txt')
+      f_questions = open('./dialogueSystem/questionsFriendGoal.txt', encoding="utf8")
     else: # User
-      f_questions = open('./dialogueSystem/questionsUserGoal.txt')
+      f_questions = open('./dialogueSystem/questionsUserGoal.txt', encoding="utf8")
     self.questions = f_questions.read().splitlines()
     # print(self.questions)
     self.asked_questions = []
@@ -204,19 +204,3 @@ class Generator:
       "You can ask me questions later"
     ]
     return random.choice(options)
-
-
-
-# G = Generator("User")
-# print(G.addressPositiveSentiment(None, "I love you"))
-# print(G.addressNegativeSentiment(None, "I hate you"))
-
-
-# # G.addressSubj(None, "I am happy")
-# # G.fallback(None, "I am happy")
-# # print(G.addressProf(None, "You smell like shit."))
-# # print(G.keyphraseTrigger(None, "Who are you?", "askedWhoTheCallerIs"))
-# test_gameState = GameState()
-# test_gameState.informationCount = 7
-# test_gameState.information["park"] = "Allison's Private Park"
-# print(G.askQuestion(test_gameState, "Hi"))

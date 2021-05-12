@@ -6,7 +6,8 @@ import re
 import string
 import spacy
 from textblob import TextBlob
-from langdetect import detect
+from langdetect import detect, detect_langs
+import enchant
 
 class Understander:
 
@@ -21,6 +22,8 @@ class Understander:
     self.identity_IP = IslandParser(identity_grammar)
 
     self.nlp = spacy.load("en_core_web_sm")
+
+    self.lang_dict = enchant.Dict("en_US")
 
   '''
   codeResponse will return a list of integers that represent responseCodes (labeled below) and an updated gameState object
@@ -84,14 +87,14 @@ class Understander:
     elif self.isQuestion(userResponse):
       responseCodes.append(1)
 
-    if not self.isEnglish(userResponse):
-      responseCodes.append(12)
+    if gameState.lang_sensitive and not self.isEnglish(userResponse):
+      return [12], gameState
 
     return responseCodes, gameState
   
   def isEnglish(self, userResponse):
     what_lang = detect(userResponse)
-    if what_lang != 'en':
+    if what_lang != 'en' and not self.lang_dict.check(userResponse):
       return False
     return True
 

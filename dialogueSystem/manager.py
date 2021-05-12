@@ -24,10 +24,25 @@ class Manager:
     print("Loading new game...\n\n\n\n\n")
 
     self.gameState = GameState()
+    # lang_selection = input("Would you like to turn on language sensitivity? ")
+
+    # if "yes" in lang_selection.lower():
+    #   self.gameState.lang_sensitive = True
+    # print("\nProcessing...\n\n\n\n\n")
+    # time.sleep(2)
+
+    lang_selection = [True, False]
+    randomList = random.choices(lang_selection, weights=(10, 100), k=1)
+    if randomList[0]:
+      self.gameState.lang_sensitive = True
+
     self.understander = Understander()
     self.generator = Generator(self.gameState.goal)
 
-    self.story = open('./dialogueSystem/story.txt').read().splitlines()
+    # print("WARNING! This game contains scenes of explicit violence.\n\n\n\n\n")
+    # time.sleep(2)
+
+    self.story = open('./dialogueSystem/story.txt', encoding="utf8").read().splitlines()
     self.achievement_path = './dialogueSystem/achievements.txt'
     
   '''
@@ -362,7 +377,7 @@ def main():
 
     see_ach = input("Your achievement has been added to ./dialogueSystem/achievement.txt. Would you like to see your past achievements? ")
     if "yes" in see_ach.lower():
-      a_file = open(manager.achievement_path)
+      a_file = open(manager.achievement_path, encoding="utf8")
       lines = a_file.read().splitlines()
       print()
       for line in lines:
@@ -372,7 +387,7 @@ def main():
       pass
     else:
       start = False
-      e_file = open('./dialogueSystem/credits.txt')
+      e_file = open('./dialogueSystem/credits.txt', encoding="utf8")
       lines = e_file.read().splitlines()
       print("\nThank you for playing our game. We hope you enjoyed your experience with MYSTERIOUS CALLER v.1.0. Bye bye. The mysterious caller eagerly awaits your next phone call.\n\n\n\n\n")
       for line in lines:

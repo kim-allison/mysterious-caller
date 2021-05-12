@@ -10,6 +10,7 @@ class GameState:
     self.rudeCount = 0
     self.convoCount = 0
     self.goodbye = False
+    self.lang_sensitive = False
     self.confused = False
     self.goal = random.choice(["User", "Friend", "Friend"]) 
     # oh lol

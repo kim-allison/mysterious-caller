@@ -36,7 +36,7 @@ class MarkovChain:
     self.corpus = corpus # text used to train model
 
     try:
-      f = open(self.corpus)
+      f = open(self.corpus, encoding="utf8")
     except OSError:
       print("BAD")
       sys.exit()
