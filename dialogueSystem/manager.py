@@ -5,6 +5,8 @@ import random
 import time
 from datetime import date
 from datetime import datetime
+from dialog_tag import DialogTag
+import os
 
 # from replit import audio
 
@@ -44,6 +46,8 @@ class Manager:
 
     self.story = open('./dialogueSystem/story.txt', encoding="utf8").read().splitlines()
     self.achievement_path = './dialogueSystem/achievements.txt'
+
+    self.model = DialogTag('distilbert-base-uncased')
     
   '''
   Based on the response codes, create a response to the user 
@@ -369,6 +373,12 @@ class Manager:
     return self.endGame()
 
 def main():
+  os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+  os.environ['TRANSFORMERS_VERBOSITY'] = 'critical'
+
+  yeses = ["Yes answers", "Affirmative non-yes answers", "Acknowledge (Backchannel)"]
+  nos = ["No answers", "Negative non-no answers"]
+
   start = True
   while start:
     manager = Manager()
@@ -376,14 +386,26 @@ def main():
     #Where the magic happens. Where the game is run
 
     see_ach = input("Your achievement has been added to ./dialogueSystem/achievement.txt. Would you like to see your past achievements? ")
-    if "yes" in see_ach.lower():
+    
+    ach_look = manager.model.predict_tag(see_ach)
+    # print('ACH: ', ach_look)
+    # print(type(ach_look))
+
+    # if "yes" in see_ach.lower():
+    if ach_look in yeses:
       a_file = open(manager.achievement_path, encoding="utf8")
       lines = a_file.read().splitlines()
       print()
       for line in lines:
         print(line)
+
     restart = input("\nWould you like to start a new game? ")
-    if "yes" in restart.lower():
+
+    restart_look = manager.model.predict_tag(restart)
+    # print('NEW GAME: ', restart_look)
+    
+    # if "yes" in restart.lower():
+    if restart_look in yeses:
       pass
     else:
       start = False
