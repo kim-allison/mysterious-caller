@@ -15,3 +15,8 @@ harsh -> <nonsense> <request>
 nonsense -> I have no idea what you <say_verb>. | What are you <say_progressive>? | You are not answering my question. | You talk nonsense. | That's rubbish.
 say_progressive -> saying | meaning | trying to communicate
 request -> Do you want to <repeat_verb> again? | Why don't you <repeat_verb> again? | Explain more.
+confused -> <exc> | <ums> | <oopsies>
+exc -> <exc><exc> | ! | ?
+ums -> Uh<dotdotdot>um<dotdotdot>hm<dotdotdot>
+dotdotdot -> ...
+oopsies -> I think I called the wrong number<dotdotdot> | Excuse me<exc> | Huh<exc> Nevermind. | I think I got the wrong number<dotdotdot> | What<exc> | What<dotdotdot>

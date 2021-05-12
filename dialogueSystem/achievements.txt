@@ -1,4 +1,4 @@
-Your Achievements: (try unlocking all 13)
+Your Achievements: (try unlocking all 13 + a special ending)
 10/05/2021 19:36:31 <ENDING 1: Safe And Sound>
 10/05/2021 19:57:49 <ENDING 4: Looming Danger>
 10/05/2021 20:12:25 <ENDING 7: Friendly Caller>
@@ -7,3 +7,13 @@ Your Achievements: (try unlocking all 13)
 10/05/2021 21:52:45 <ENDING 2: Don't Be Rude>
 11/05/2021 02:22:37 <ENDING 4: Looming Danger>
 11/05/2021 02:30:43 <ENDING 1: Safe And Sound>
+11/05/2021 02:52:05 <ENDING 7: Friendly Caller>
+12/05/2021 16:49:27 <ENDING 4: Looming Danger>
+12/05/2021 17:38:21 <ENDING 4: Looming Danger>
+12/05/2021 17:40:10 <ENDING 1: Safe And Sound>
+12/05/2021 17:45:48 <ENDING 2: Don't Be Rude>
+12/05/2021 18:14:28 <ENDING 1: Safe And Sound>
+12/05/2021 18:17:19 <SPECIAL ENDING: Bilingual>
+12/05/2021 18:27:50 <SPECIAL ENDING: Bilingual>
+12/05/2021 18:28:28 <SPECIAL ENDING: Bilingual>
+12/05/2021 18:29:04 <SPECIAL ENDING: Bilingual>

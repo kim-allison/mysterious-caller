@@ -6,6 +6,7 @@ import re
 import string
 import spacy
 from textblob import TextBlob
+from langdetect import detect
 
 class Understander:
 
@@ -34,14 +35,15 @@ class Understander:
     8. avoided question
     9. subjectivity
     10. strong positive sentiment
-
     11. DialogueTag type of question was asked -> generator: resolveObligation -> and then check 1
+    12. non-English response
   '''
   def codeResponse(self, userResponse, gameState):
     responseCodes = []
 
     if self.hasPositiveSentiment(userResponse):
       responseCodes.append(10)
+      # gameState.confused = True
 
     if self.hasNegativeSentiment(userResponse):
       responseCodes.append(5)
@@ -82,8 +84,16 @@ class Understander:
     elif self.isQuestion(userResponse):
       responseCodes.append(1)
 
+    if not self.isEnglish(userResponse):
+      responseCodes.append(12)
+
     return responseCodes, gameState
   
+  def isEnglish(self, userResponse):
+    what_lang = detect(userResponse)
+    if what_lang != 'en':
+      return False
+    return True
 
   def isQuestion(self, userResponse):
     '''
@@ -101,8 +111,7 @@ class Understander:
 
     # sentence = "I'll probably go to shopping today."
     # output = model.predict_tag(sentence)
-    # output can be: Yes-No-Question	(Yes answers, No answers, Affirmative non-yes answers, Negative non-no answers))
-
+    # output can be: Yes-No-Question	)
     # (Declarative Yes-No-Question
     return False 
 

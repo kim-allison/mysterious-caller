@@ -3,7 +3,7 @@ restaurant -> restaurant <snack_is> | favorite restaurant <snack_is>
 park -> park <snack_is> | favorite park <snack_is>
 i_like -> I like going <shop_prep> | I <verb> | I <verb> | I <verb> | we like to go <shop_prep> | We like to go <shop_prep> | I like to do <shop_prep>
 work -> I <verb> | She <verb> | He <verb> | They <verb> | We <verb>
-verb -> study <prep> | work <prep> | studies <prep> | works <prep> | likes | like | likes <shop_prep> | like <shop_prep> | love | enjoy | don't know | would like <prep> | want <prep> | will | am going to
+verb -> study <prep> | work <prep> | studies <prep> | works <prep> | likes | like | likes <shop_prep> | like <shop_prep> | love | enjoy | don't know | would like <prep> | want <prep> | will | am going to | want to
 shop -> I like to <action> | I <gerund> | We like to <action> | We <gerund>
 action -> shop <shop_prep> | go <shop_prep> | attend | do <shop_prep> | be <shop_prep> | hang out <shop_prep> | have fun <shop_prep> | hang out often <shop_prep>
 gerund -> like shopping <shop_prep> | like going <shop_prep> | go shoping <shop_prep>

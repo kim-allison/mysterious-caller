@@ -43,7 +43,8 @@ class Manager:
     8. avoided question
     9. subjectivity
     10. strong positive sentiment
-    11. obligation identified
+    11. resolve obligations
+    12. not English
   '''
   def respond(self, userResponse):
   
@@ -55,17 +56,17 @@ class Manager:
     responses = []
 
     # if we have both subjectivity and sentiment, just address the sentiment, or sentiment and profanity
-    if 5 in respCodes and 9 in respCodes:
-      respCodes.remove(9)
-    if 10 in respCodes and 9 in respCodes:
-      respCodes.remove(9)
-    if 5 in respCodes and 6 in respCodes:
-      respCodes.remove(random.choice([5,6]))
-    if 2 in respCodes:
-      respCodes = [2]
-    if 4 in respCodes:
-      respCodes = [4]
-
+    # if 5 in respCodes and 9 in respCodes:
+    #   respCodes.remove(9)
+    # if 10 in respCodes and 9 in respCodes:
+    #   respCodes.remove(9)
+    # if 5 in respCodes and 6 in respCodes:
+    #   respCodes.remove(random.choice([5,6]))
+    # if 2 in respCodes:
+    #   respCodes = [2]
+    # if 4 in respCodes:
+    #   respCodes = [4]
+    
     #Given what tetermine what to do in each situation
     if respCodes == []: #no response codes were detected
       # print("EMPTY")
@@ -94,9 +95,9 @@ class Manager:
     if 10 in respCodes: #User had strong positive sentiment
       responses.append(self.generator.addressPositiveSentiment(self.gameState, userResponse))
       responses.append(self.generator.elizaTransformation(self.gameState, userResponse))
-    if 11 in respCodes: #A dialog tag was identified in user response
+    if 11 in respCodes: # A dialog tag was identified in user response
       responses.append(self.generator.resolveObligation(self.gameState, userResponse))
-    if 5 in respCodes: #User had strong negative sentiment
+    if 5 in respCodes: # User had strong negative sentiment
       responses.append(self.generator.addressNegativeSentiment(self.gameState, userResponse))
       responses.append(self.generator.elizaTransformation(self.gameState, userResponse))
       takeMultipleTurns = False
@@ -111,6 +112,9 @@ class Manager:
           responses.append(self.generator.askQuestion(self.gameState,userResponse))
         self.gameState.avoidedQuestion += 1
       #return [] <- uncomment for "Yield Floor" feature
+    if 12 in respCodes: # User used some other language (not English)
+      responses.append(self.generator.keyphraseTrigger(self.gameState, userResponse,"otherLanguage"))
+      self.gameState.confused = True
     
     if takeMultipleTurns:
       responses.append(self.generator.askQuestion(self.gameState,userResponse))
@@ -151,7 +155,10 @@ class Manager:
 
     # print("Ending game")
     if state == "hangUp":
-      if self.gameState.getConvo() <= 5: #they hang out on rounds 3,4,5
+      if self.gameState.confused:
+        print("\nThe caller hangs up. I wonder what that was about...")
+        ending_key += "<SPECIAL ENDING: Bilingual>"
+      elif self.gameState.getConvo() <= 5: #they hang out on rounds 3,4,5
         print("\nYou hang up. I wonder what that was about...")
         ending_key += "<ENDING 1: Safe And Sound>"
       else: #they hang up after round 5
@@ -309,6 +316,9 @@ class Manager:
         self.gameState.lastBotResponse = botResponse
         
         if self.gameState.goodbye:
+          return self.endGame("hangUp")
+
+        if self.gameState.confused:
           return self.endGame("hangUp")
 
         if self.gameState.convoCount >= len(self.story):

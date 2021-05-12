@@ -1,4 +1,0 @@
-friend_act -> <we_start> | <i_start>
-we_start -> we <action> | We <action>
-i_start -> I <action>
-action -> like to | usually | often | everyday | sometimes | enjoy | do

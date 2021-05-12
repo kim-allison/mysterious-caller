@@ -71,6 +71,8 @@ class Generator:
       return response+self.identity_chain.generate(55)
     elif keyphrase == "greetedCaller":
       return "Hello, my friend. Good to hear your voice. I hope I'm not interrupting anything. I just wanted to ask you a few questions if that's okay."
+    elif keyphrase == "otherLanguage":
+      return self.engine.generate('confused')
     else: # saidGoodbye
       return "I guess this is the end of our call. Maybe we'll talk again some other day...maybe we won't. Goodbye now."
     return "ERROR"
