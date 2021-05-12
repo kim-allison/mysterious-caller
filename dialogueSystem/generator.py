@@ -7,12 +7,14 @@ from profanity import profanity
 from dependency_parsing import DependencyParsing
 from grammar_engine import *
 import random
+from dialog_tag import DialogTag
 
 class Generator:
   questions = []
 
   def __init__(self, goal):    
     self.engine = GrammarEngine('./dialogueSystem/grammar/generator.txt')
+    self.p_engine = GrammarEngine('./dialogueSystem/grammar/polarity_response.txt')
 
     f_dracula= open('./dialogueSystem/dracula.txt', encoding="utf8")
     whole_dracula = f_dracula.read()
@@ -31,19 +33,24 @@ class Generator:
     self.asked_questions = []
     self.prev_count = -1
 
-  # Resolve obligation: Starr
-  def resObligation(self, gameState, userResponse):
-    engine = GrammarEngine('./dialogueSystem/grammar/response_question.txt')
-    return engine.generate('response')
+    self.model = DialogTag('distilbert-base-uncased') # dialogue tags
+
+  # Resolve obligation: TODO(Starr) <- generate according to question type
+  def resolveObligation(self, gameState, userResponse):
+    # if gameState.questionActType == "a type of question", do something
+    # engine = GrammarEngine('./dialogueSystem/grammar/response_question.txt')
+    # return engine.generate('response')
+
+    # return yes/ no type of response
+    # return gameState.questionActType
+    return self.engine.generate('obligation')
   
   # Strong sentiment
   def addressPositiveSentiment(self, gameState, userResponse):
-    engine = GrammarEngine('./dialogueSystem/grammar/polarity_response.txt')
-    return engine.generate('positive')
+    return self.p_engine.generate('positive')
 
   def addressNegativeSentiment(self, gameState, userResponse):
-    engine = GrammarEngine('./dialogueSystem/grammar/polarity_response.txt')
-    return engine.generate('negative')
+    return self.p_engine.generate('negative')
 
   # Subjectivity: Rie
   def addressSubj(self, gameState, userResponse):

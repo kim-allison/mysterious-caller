@@ -1,3 +1,3 @@
-identity -> Who<question> | who<question> | What<other_question> | what<other_question>
-question -> 's this | is this | 're you | are you | am I speaking to
-other_question -> 're you | do you do
+identity -> Who<wh_question> | who<wh_question> | What<other_question> | what<other_question> | why<other_question> | Why<other_question>
+wh_question -> 's this? | is this? | 're you? | are you? | am I speaking to
+other_question -> 're you asking |  do you do

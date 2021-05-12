@@ -20,3 +20,10 @@ exc -> <exc><exc> | ! | ?
 ums -> Uh<dotdotdot>um<dotdotdot>hm<dotdotdot>
 dotdotdot -> ...
 oopsies -> I think I called the wrong number<dotdotdot> | Excuse me<exc> | Huh<exc> Nevermind. | I think I got the wrong number<dotdotdot> | What<exc> | What<dotdotdot>
+obligation -> <yes> | <no>
+yes -> <short_yes>. | <long_yes>.
+short_yes -> Yes | Absolutely | Yup | Yeah
+long_yes -> <short_yes>, duh
+no -> <short_no>. | <long_no>.
+short_no -> No | Absolutely not | Nope
+long_no -> <short_no>, duh

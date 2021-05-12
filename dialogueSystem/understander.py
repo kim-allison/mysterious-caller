@@ -8,6 +8,7 @@ import spacy
 from textblob import TextBlob
 from langdetect import detect, detect_langs
 import enchant
+from dialog_tag import DialogTag
 
 class Understander:
 
@@ -19,11 +20,14 @@ class Understander:
     self.goodbye_IP = IslandParser(goodbye_grammar)
 
     identity_grammar = './dialogueSystem/grammar/identity.txt'
-    self.identity_IP = IslandParser(identity_grammar)
+    self.identity_IP = IslandParser(identity_grammar) # island parsers
 
-    self.nlp = spacy.load("en_core_web_sm")
+    self.nlp = spacy.load("en_core_web_sm") # spacy NER tags
 
-    self.lang_dict = enchant.Dict("en_US")
+    self.lang_dict = enchant.Dict("en_US") # languages
+
+    self.model = DialogTag('distilbert-base-uncased') # dialogue tags
+    self.sample_qs = ["Yes-No-Question", "Declarative Yes-No-Question"]
 
   '''
   codeResponse will return a list of integers that represent responseCodes (labeled below) and an updated gameState object
@@ -85,7 +89,12 @@ class Understander:
     elif self.isGreeting(userResponse):
       responseCodes.append(3)
     elif self.isQuestion(userResponse):
-      responseCodes.append(1)
+      ob_check, ob_tag = self.isObligation(userResponse)
+      if ob_check:
+        responseCodes.append(11)
+        gameState.questionActType = ob_tag # update info about question type
+      else:
+        responseCodes.append(1)
 
     if gameState.lang_sensitive and not self.isEnglish(userResponse):
       return [12], gameState
@@ -98,6 +107,12 @@ class Understander:
       return False
     return True
 
+  def isObligation(self, userResponse):
+    q_tag = self.model.predict_tag(userResponse)
+    if q_tag in self.sample_qs:
+      return True, q_tag
+    return False, ""
+
   def isQuestion(self, userResponse):
     '''
       1) check if the the user asked a question
@@ -106,16 +121,6 @@ class Understander:
     # ? -> DialogueAct
     if '?' in userResponse:
       return True
-    # TODO(Allison): elif (DialogueAct)
-
-    # this code might be helpful for dialogue act 
-    # from dialog_tag import DialogTag
-    # model = DialogTag('distilbert-base-uncased')
-
-    # sentence = "I'll probably go to shopping today."
-    # output = model.predict_tag(sentence)
-    # output can be: Yes-No-Question	)
-    # (Declarative Yes-No-Question
     return False 
 
   def isIdentityQuestion(self, userResponse):
@@ -123,6 +128,8 @@ class Understander:
       1) check against identity grammar: is the user asking for caller's identity
     '''
     parse_tree, tree_check = self.identity_IP.parse(userResponse)
+    if "how" in userResponse.lower():
+      return False
     return tree_check
 
   #Starr
