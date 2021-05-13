@@ -19,7 +19,7 @@ confused -> <exc> | <ums> | <oopsies>
 exc -> <exc><exc> | ! | ?
 ums -> Uh<dotdotdot>um<dotdotdot>hm<dotdotdot>
 dotdotdot -> ...
-oopsies -> I think I called the wrong number<dotdotdot> | Excuse me<exc> | Huh<exc> Nevermind. | I think I got the wrong number<dotdotdot> | What<exc> | What<dotdotdot>
+oopsies -> I think I called the wrong number<dotdotdot> | Excuse me<exc> | Huh<exc> Nevermind. | I think I got the wrong number<dotdotdot> | What<exc> | What<dotdotdot> | I don't speak that language<exc>
 obligation -> <yes> | <no>
 yes -> <short_yes>. | <long_yes>.
 short_yes -> Yes | Absolutely | Yup | Yeah
